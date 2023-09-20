@@ -1,0 +1,13 @@
+.match-image{
+    width: 10em;
+    height: 10em;
+    margin-top: 3em;
+    margin-left: 4.5em;
+}
+
+@media (max-width: 768px) {
+.match-image
+  {
+    position: relative; left: 10em;
+  }
+}

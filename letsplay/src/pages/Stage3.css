@@ -1,0 +1,154 @@
+.textfield3
+{
+    width: 800px;
+    height: 400px;
+    background-color: rgb(44, 48, 43);
+    border-radius: 5%;
+    opacity: 90%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top:200px ;
+}
+.radio-inputs3 {
+    position: relative;left: 225px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 350px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .rating {
+    display: inline-block;
+    position: relative;left: 60px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .rating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  .rating label:last-child {
+    position: static;
+  }
+  
+  .rating label:nth-child(1) {
+    z-index: 5;
+  }
+  
+  .rating label:nth-child(2) {
+    z-index: 4;
+  }
+  
+  .rating label:nth-child(3) {
+    z-index: 3;
+  }
+  
+  .rating label:nth-child(4) {
+    z-index: 2;
+  }
+  
+  .rating label:nth-child(5) {
+    z-index: 1;
+  }
+  
+  .rating label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  
+  .rating label .icon {
+    float: left;
+    color: transparent;
+  }
+  
+  .rating label:last-child .icon {
+    color: #000;
+  }
+  
+  .rating:not(:hover) label input:checked ~ .icon,
+  .rating:hover label:hover input ~ .icon {
+    color: #09f;
+  }
+  
+  .rating label input:focus:not(:checked) ~ .icon:last-child {
+    color: #000;
+    text-shadow: 0 0 5px #09f;
+  }
+  .buttonletsplay3 {
+    background-color: #13aa52;
+    border: 1px solid #13aa52;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+    outline: 0;
+    padding: 10px 25px;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform 150ms, box-shadow 150ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    position: relative;top: 40px;right: 140px;
+  }
+  
+  .buttonletsplay3:hover {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+    background-color: #1dc965;
+  }
+  .desc2
+  {
+    font-size: 20px;
+    color: white;
+    font-family: monospace;
+    align-content: center;
+  }
+  
+  @media (max-width: 768px) {
+    .buttonletsplay3 {
+      padding: 10px 30px;
+      position: relative; left: 9px; top: 90px;
+    }
+    .textfield3
+    {
+        width: 22em;
+        height: 33em;
+        left: 0em;
+        position: relative; bottom: 194px; bottom:40px
+    }
+    .rating
+    {
+      position: relative; left: 3px; top:90px 
+    }
+    .radio-inputs3
+    {
+      position: relative; left: 126px;
+    }
+    .inp
+    {
+      position: relative; right: 290px;top:90px
+    }
+    .desc2
+    {
+      position: relative; top: 100px;
+    }
+  }
+  

@@ -1,0 +1,74 @@
+.homepage
+{
+    background-image: url('../assets/wallpaper.jpeg');
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+.textfield
+{
+    width: 60em;
+    height: 22em;
+    background-color: rgb(44, 48, 43);
+    border-radius: 6%;
+    opacity: 90%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top:200px ;
+}
+.title
+{
+    font-size: 40px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-family: monospace;
+}
+.desc
+{
+    font-size: 20px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-family: monospace;
+    align-content: center;
+}
+.buttonletsplay {
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buttonletsplay:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+  background-color: #1dc965;
+}
+
+@media (max-width: 768px) {
+  .buttonletsplay {
+    padding: 10px 30px;
+  }
+  .textfield
+  {
+    width: 22em;
+    height: 35em;
+    position: relative;bottom: 5em;
+  }
+}
