@@ -172,10 +172,16 @@ input[type="number"] {
     white-space: nowrap;
     width: 1px;
   }
+  .labell
+  {
+    position: relative;left: 130px; bottom: 20px;
+  }
+  .buttonletsplay
+  {
+    position: relative;bottom: 20px;
+  }
   @media (max-width: 768px) {
-    .labell
-    {
-      position: relative;right: 170px;
-      margin-bottom: 40px;
+    .ss{
+      position: relative;right: 300px;
     }
   }

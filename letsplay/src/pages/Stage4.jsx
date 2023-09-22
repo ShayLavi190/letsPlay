@@ -14,13 +14,14 @@ function Stage4() {
   const rating = queryParams.get('rating');
   const [selectedTeams, setSelectedTeams] = useState([]);
   const [result, setResult] = useState([]);
-  function createSingleMatch(leagueName)
-  {
+  function createSingleMatch(leagueName) {
     const selectedLeague = data.leagues.find((l) => l.name === leagueName);
+    
     if (selectedLeague) {
       const teamsSelected = selectedLeague.teams.filter((team) => team.rating === rating);
+      
       const selectedTeamss = [];
-
+  
       for (let i = 0; i < Math.min(players, teamsSelected.length); i++) {
         let index = Math.floor(Math.random() * teamsSelected.length);
         while (selectedTeamss.includes(teamsSelected[index])) {
@@ -28,23 +29,23 @@ function Stage4() {
         }
         selectedTeamss.push(teamsSelected[index]);
       }
-      setSelectedTeams(selectedTeamss);
-
+      setSelectedTeams(selectedTeamss)
       let res = [];
-      for (let i = 0; i < names.length && i < selectedTeams.length; i++) {
-        res.push({ name: names[i], team: selectedTeams[i] });
+      for (let i = 0; i < names.length && i < selectedTeamss.length; i++) {
+        res.push({ name: names[i], team: selectedTeamss[i] });
       }
       setResult(res);
     }
   }
-  function createPairsMatch(leagueName)
-  {
+  
+  function createPairsMatch(leagueName) {
     const selectedLeague = data.leagues.find((l) => l.name === leagueName);
+  
     if (selectedLeague) {
       const teamsSelected = selectedLeague.teams.filter((team) => team.rating === rating);
       const selectedTeamss = [];
-
-      for (let i = 0; i < Math.min(players/2, teamsSelected.length); i++) {
+  
+      for (let i = 0; i < Math.min(players / 2, teamsSelected.length); i++) {
         let index = Math.floor(Math.random() * teamsSelected.length);
         while (selectedTeamss.includes(teamsSelected[index])) {
           index = Math.floor(Math.random() * teamsSelected.length);
@@ -52,15 +53,25 @@ function Stage4() {
         selectedTeamss.push(teamsSelected[index]);
       }
       setSelectedTeams(selectedTeamss);
-
+  
+      // Shuffle the names array for unique pairs
+      const shuffledNames = [...names];
+      for (let i = shuffledNames.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledNames[i], shuffledNames[j]] = [shuffledNames[j], shuffledNames[i]];
+      }
+  
+      // Group the shuffled names into pairs
       let res = [];
-      let pairs = generateUniquePairs(names);
-      for (let i = 0; i < pairs.length && i < selectedTeams.length; i++) {
-        res.push({ name: pairs[i], team: selectedTeams[i] });
+      while (shuffledNames.length >= 2) {
+        const name1 = shuffledNames.pop();
+        const name2 = shuffledNames.pop();
+        res.push({ name: { name1, name2 }, team: selectedTeamss.pop() });
       }
       setResult(res);
     }
   }
+  
   function generateUniquePairs(namesArray) {
     const pairs = [];
     
@@ -91,8 +102,14 @@ function Stage4() {
 
     window.location.href = '/stage1';
   }
+
+  const clearState = () => {
+    setSelectedTeams([]);
+    setResult([]);
+  };
+
   useEffect(() => {   
-    console.log('effect re-render');
+    clearState();
     if (typeof names === 'string') {
       names = names.split(',');
     }
@@ -135,55 +152,61 @@ function Stage4() {
          for (let i = 0; i < names.length; i++) {
            res.push({ name: names[i], team: selectedTeams[i] });
          }
-         console.log('set result***', res)
          setResult(res)
       }
     }
-    if (mode === 'pairs')
-    {
+    if (mode === 'pairs') {
       if (league === 'La liga') {
-        createPairsMatch('La liga')
-        }
+        createPairsMatch('La liga');
+      }
       if (league === 'Priemer league') {
-        createPairsMatch('Priemer league')
-          }
+        createPairsMatch('Priemer league');
+      }
       if (league === 'Bundesliga') {
-        createPairsMatch('Bundesliga')
-            }
+        createPairsMatch('Bundesliga');
+      }
       if (league === 'Serie A') {
-        createPairsMatch('Serie A')
-          }
+        createPairsMatch('Serie A');
+      }
       if (league === 'Ligue 1') {
-        createPairsMatch('Ligue 1')
-        }
+        createPairsMatch('Ligue 1');
+      }
       if (league === 'International') {
-        createPairsMatch('International')
+        createPairsMatch('International');
       }
       if (league === 'All') {
-        const selectedTeamss = [];
-        for (let i = 0; i < names.length; i++) {
-          let leagueindex = Math.floor(Math.random() * data.leagues.length);
-          const selectedLeague = data.leagues[leagueindex];
-          if (selectedLeague) {
-            const teamsSelected = selectedLeague.teams.filter((team) => team.rating === rating);
-            let index = Math.floor(Math.random() * teamsSelected.length);
-            while (selectedTeamss.includes(teamsSelected[index])) {
-              index = Math.floor(Math.random() * teamsSelected.length);
-            }
-            selectedTeamss.push(teamsSelected[index]);
+          let selectedTeamsa =[];
+          for(let i=0;i<names.length;i++)
+          {
+            let leagueindex = Math.floor(Math.random() * data.leagues.length);
+            const selectedLeague = data.leagues[leagueindex];
+            if (selectedLeague) {
+              const teamsSelected = selectedLeague.teams.filter((team) => team.rating === rating);
+              let index = Math.floor(Math.random() * teamsSelected.length);
+              while (selectedTeams.includes(teamsSelected[index])) {
+                  index = Math.floor(Math.random() * teamsSelected.length);
+                }
+                selectedTeamsa.push(teamsSelected[index]);
+              }
+          }      
+          // Shuffle the names array for unique pairs
+          const shuffledNames = [...names];
+          for (let i = shuffledNames.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledNames[i], shuffledNames[j]] = [shuffledNames[j], shuffledNames[i]];
           }
-        }
-        setSelectedTeams(selectedTeamss);
-        console.log(selectedTeams)
-        let pairs = generateUniquePairs(names);
-        let res = [];
-        for (let i = 0; i < pairs.length; i++) {
-          res.push({ name: pairs[i], team: selectedTeams[i] });
-        }
-        setResult(result)
+      
+          // Group the shuffled names into pairs
+          let res = [];
+          while (shuffledNames.length >= 2) {
+            const name1 = shuffledNames.pop();
+            const name2 = shuffledNames.pop();
+            res.push({ name: { name1, name2 }, team: selectedTeamsa.pop() });
+          }
+          setResult(res);
       }
     }
-  }, []);
+  }, [mode, league, names, rating, players]);
   return (
     <>
       {result.length > 0 ? (
@@ -192,7 +215,7 @@ function Stage4() {
             <p className='title4'><b>Starting matches</b></p>
             <div className="match-cards-container">
             {result.map((element, index) => (
-                <React.Fragment key={index}>
+                <React.Fragment key={element.uniqueId}>
                   <div className="match-card-pair">
                     {element.name.name2 ? (
                       <MatchCardP name1={element.name.name1} name2={element.name.name2} team={element.team} />

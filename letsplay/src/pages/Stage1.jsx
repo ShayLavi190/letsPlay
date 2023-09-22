@@ -51,6 +51,7 @@ function Stage1() {
                     <input type="button" value="+" className="button-plus" data-field="quantity" onClick={increment} />
                 </div>
                 <p className='desc'><b>Pairs or singles?</b></p>
+                <div className='ss'>
                 <div className="radio-inputs">
                     <label className='labell'>
                         <input className="radio-input" type="radio" value="pairs" checked={mode === 'pairs'} onChange={handleOptionChange} />
@@ -66,6 +67,7 @@ function Stage1() {
                             <span className="radio-label">Singles</span>
                         </span>
                     </label>
+                </div>
                 </div>
                 <button className='buttonletsplay'  style={{ marginTop: '20px' }} onClick={redirect}>Let's start</button>
             </div>
